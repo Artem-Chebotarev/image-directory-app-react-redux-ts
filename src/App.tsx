@@ -88,7 +88,7 @@ const App: FC = () => {
                       photos.map(elem => (
                         <div key={elem.id} className="masonry-item">
                           <a href="/#" onClick={(event) => { }}>
-                            <img src={elem.src.large} alt="" onClick={(event: React.MouseEvent<HTMLImageElement>) => imageClickHandler(event, elem)} />
+                            <img src={elem.src.large} alt="" onClick={(event) => imageClickHandler(event, elem)} />
                           </a>
                         </div>
                       ))
