@@ -15,7 +15,6 @@ const photosReducer = (state = initStatePhotos, action: PhotosAction): PhotosSta
                 ...state,
                 isLoading: true,
                 error: null,
-                // photos: [],
                 totalResult: 0,
             }
 
