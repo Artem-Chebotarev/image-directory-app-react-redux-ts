@@ -7,7 +7,7 @@ import { Photo } from 'pexels';
 import Modal from './components/Modal.tsx/Modal';
 
 const App: FC = () => {
-  const { fetchPhotos, fetchCuratedPhotos } = useActions();
+  const { fetchPhotos, fetchCuratedPhotos, fetchNewCategory } = useActions();
   const { photos, totalResult, isLoading, error } = useTypedSelector(state => state.photos);
   const [mode, setMode] = useState<string>('trending');
   const [searchFor, setSearchFor] = useState<string>('');
@@ -46,7 +46,7 @@ const App: FC = () => {
   const showTrendingPhotos = () => {
     setTitle('Trending');
     setMode('trending');
-    fetchCuratedPhotos(page + 1, () => setBtnLoading(false), () => setBtnLoading(true));
+    fetchNewCategory(page + 1, () => setBtnLoading(false), () => setBtnLoading(true));
   }
 
   const modalCloseHandler = () => {

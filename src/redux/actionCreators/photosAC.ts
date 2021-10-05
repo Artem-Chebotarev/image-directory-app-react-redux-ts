@@ -69,3 +69,35 @@ export const fetchCuratedPhotos = (page: number, onSuccess: () => void, onError:
         }
     }
 }
+
+export const fetchNewCategory = (page: number, onSuccess: () => void, onError: () => void): ThunkAction<void, RootState, null, PhotosAction> => {
+    return async (dispatch: Dispatch<PhotosAction>) => {
+        try {
+            dispatch({ type: PhotosActionEnum.FETCH_NEW_CATEGORY });
+            
+            const photos: Photos | ErrorResponse = await client.photos.curated({ page, per_page: 10 });
+
+            if ('error' in photos) {
+                throw new Error(photos.error);
+            } else {
+                dispatch({
+                    type: PhotosActionEnum.FETCH_PHOTOS_SUCCESS,
+                    payload: {
+                        photos: photos.photos,
+                        page: page,
+                        totalResults: 0,
+                    },
+                });
+
+                onSuccess();
+            }
+        } catch (error) {
+            dispatch({
+                type: PhotosActionEnum.FETCH_PHOTOS_ERROR,
+                payload: 'Произошла ошибка при загрузке фотографий',
+            });
+
+            onError();
+        }
+    }
+}

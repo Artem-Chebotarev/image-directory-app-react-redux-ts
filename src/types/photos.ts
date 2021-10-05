@@ -11,6 +11,7 @@ export enum PhotosActionEnum {
     FETCH_PHOTOS = 'FETCH_PHOTOS',
     FETCH_PHOTOS_SUCCESS = 'FETCH_PHOTOS_SUCCESS',
     FETCH_PHOTOS_ERROR = 'FETCH_PHOTOS_ERROR',
+    FETCH_NEW_CATEGORY= 'FETCH_NEW_CATEGORY',
 }
 
 export interface FetchPhotosAction {
@@ -31,7 +32,12 @@ export interface FetchPhotosErrorAction {
     payload: string;
 }
 
+export interface FetchPhotosNewCategoryAction {
+    type: PhotosActionEnum.FETCH_NEW_CATEGORY;
+}
+
 export type PhotosAction =
     FetchPhotosAction |
     FetchPhotosSuccessAction |
-    FetchPhotosErrorAction;
+    FetchPhotosErrorAction |
+    FetchPhotosNewCategoryAction;

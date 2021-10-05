@@ -49,6 +49,15 @@ const photosReducer = (state = initStatePhotos, action: PhotosAction): PhotosSta
                 totalResult: 0,
             }
 
+        case PhotosActionEnum.FETCH_NEW_CATEGORY:
+            return {
+                ...state,
+                isLoading: true,
+                error: null,
+                photos: [],
+                totalResult: 0,
+            }
+
         default:
             return state;
     }
